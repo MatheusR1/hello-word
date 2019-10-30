@@ -1,0 +1,110 @@
+# hello-word
+
+<script>
+var produtos=parseInt(prompt("digite a quantidade de produtos"));;
+var categoria=0;
+var situação=0;
+var nome="";
+
+var NovoPreco1=0;
+var NovoPreco2=0;
+var NovoPreço3=0;
+
+var maxPreco=0;
+var minPreco=999999999999999999999999999999999;
+var caro="";
+var barato="";
+
+
+var CountMaior8=0;
+var CountMenorouIgual8=0;
+	for (var i=0;i<=produtos;i++){
+		categoria=parseInt(prompt("digite a categoria: 1-limpeza 2-vestuario 3-alimentação"));
+		nome=prompt("digite o nome do produto");
+		preco=parseFloat(prompt("digite o preço do produto"));
+		situação=prompt("digite a situção R ou N");
+		if (categoria==1 && situação=="N" && preco<=78.00){
+			preco=preço+(preco*5/100)
+			NovoPreco1=preco;
+			CountMenorouIgual8++
+			document.write("os produtos de categoria 1 tiveram aumento de 5% + 5% de imposto");
+		}
+		if (categoria==2 && situação=="N"&& preco<=78.00){
+			preco=preco+(preco*8/100)
+			NovoPreco2=preco;
+			CountMenorouIgual8++
+			document.write("os produtos de categoria 2 tiveram aumento padrao de 8%");
+		}
+		if (categoria==3 && situação=="R"&& preco<=78.00){
+			preco=preco+(preco*10/100)+(preço*2.5/100);
+			NovoPreco2=preco;
+			CountMaior8++
+			document.write("os produtos de categoria 3 tiveram aumento padrao de 8% e os que precisao de refrigeracao + 2.5%");
+		}
+		if (categoria==3 && situação=="N"&& preco<=78.00){
+			preco=preco+(preco*10/100);
+			NovoPreco2=preco;
+			CountMaior8++
+			document.write("os produtos de categoria 3 tiveram aumento de 8%");
+		}
+		if (categoria==1 && situação=="N" && preco>78.00){
+			preco=preço+(preco*12/100)
+			NovoPreco1=preco;
+			CountMaior8++
+			document.write("os produtos de categoria 1 tiveram aumento de 5% + 5% de imposto");
+		}
+		if (categoria==2 && situação=="N"&& preco>78.00){
+			preco=preco+(preco*18/100);
+			NovoPreco2=preco;
+			CountMaior8++
+			document.write("os produtos de categoria 2 tiveram aumento de 8%");
+		}
+		if (categoria==3 && situação=="R" && preco>78.00){
+			preco=preco+(preco*18/100)+(preço*2.5/100);
+			NovoPreco3=preco;
+			CountMaior8++
+			document.write("os produtos de categoria 3 tiveram aumento de pradrao 10% e os que precisao de refrigeracao + 2.5%");
+		}
+		if (categoria==3 && situação=="N"&& preco>78.00){
+			preco=preco+(preco*18/100)
+			NovoPreco2=preco;
+			CountMaior8++
+			document.write("os produtos de categoria 2 tiveram aumento padrao de 8%");
+		}
+		else {
+			alert ("ERRO! <p> reinicie o programa!</p> ");
+		}
+		if (preco>maxPreco){
+			maxPreco=preco;
+			caro=nome
+		}
+		if (preco<minPreco){
+			minPreco=preco
+			barato=nome
+		}	
+		
+	}
+
+function calculaPreco(preco,NovoPreco){
+	var calculo=NovoPreco-preco;
+	return calculo
+	document.write( "o novo preço é "+calculo+"<br>");
+}	
+
+//preço
+calculaPreco(preco,NovoPreco1)
+document.write("categoria1");
+calculaPreco(preco,NovoPreco2)
+document.write("categoria2");
+calculaPreco(preco,NovoPreco3)
+document.write("categoria3");
+
+// contador
+document.write("A quantidade produtos que sofreram aumento maior que 8% é: "+CountMaior8+"<br>");
+document.write("A quantidaade de produtos que sofreram aumento menor ou igual a  8% é: " + CountMenorouIgual8+"<br>");
+
+
+// mais caro e mais barato
+document.write("o produto mais caro é: "+ caro+"que custa"+maxPreco);
+document.write("o produto mais barato é: "+ barato +"que custa"+minPreco);
+</script>
