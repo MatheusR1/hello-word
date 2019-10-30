@@ -1,14 +1,20 @@
 # hello-word
 
 <script>
+
+
+function calculaPreco(preco,NovoPreco,nome){	
+		var calculo=NovoPreco-preco;
+		document.write( "o aumento correspondente a " +nome+ " foi de: "+calculo.toFixed(2)+ "<br>");
+}
+
 var produtos=parseInt(prompt("digite a quantidade de produtos"));;
 var categoria=0;
 var situação=0;
 var nome="";
+var preco=0;
 
-var NovoPreco1=0;
-var NovoPreco2=0;
-var NovoPreço3=0;
+var NovoPreco=0;
 
 var maxPreco=0;
 var minPreco=999999999999999999999999999999999;
@@ -18,86 +24,68 @@ var barato="";
 
 var CountMaior8=0;
 var CountMenorouIgual8=0;
-	for (var i=0;i<=produtos;i++){
-		categoria=parseInt(prompt("digite a categoria: 1-limpeza 2-vestuario 3-alimentação"));
+	for (var i=0;i<produtos;i++){
+		categoria=parseInt(prompt("digite a categoria: \n 1-limpeza \n 2-vestuario \n 3-alimentação"));
 		nome=prompt("digite o nome do produto");
 		preco=parseFloat(prompt("digite o preço do produto"));
-		situação=prompt("digite a situção R ou N");
+		situação=prompt("digite a situção: \n R-Precisa de refrigeração \n N-Não precisa de refrigerção");
+		// considerei apenas que os produtos que necessitam de refrigeração são os do tipo de alimentação.
 		if (categoria==1 && situação=="N" && preco<=78.00){
-			preco=preço+(preco*5/100)
-			NovoPreco1=preco;
-			CountMenorouIgual8++
-			document.write("os produtos de categoria 1 tiveram aumento de 5% + 5% de imposto");
+			NovoPreco=preco+(preco*0.05);
+			CountMenorouIgual8++;
+			document.write("os produtos de categoria 1 tiveram aumento de 5% "+ "e o novo preço é de "+NovoPreco+"<br>");
 		}
 		if (categoria==2 && situação=="N"&& preco<=78.00){
-			preco=preco+(preco*8/100)
-			NovoPreco2=preco;
-			CountMenorouIgual8++
-			document.write("os produtos de categoria 2 tiveram aumento padrao de 8%");
+			NovoPreco=preco+(preco*0.08);
+			CountMenorouIgual8++;
+			document.write("os produtos de categoria 2 tiveram aumento padrao de 8% <br> " + "e o novo preço é de "+NovoPreco+"<br>");
 		}
 		if (categoria==3 && situação=="R"&& preco<=78.00){
-			preco=preco+(preco*10/100)+(preço*2.5/100);
-			NovoPreco2=preco;
-			CountMaior8++
-			document.write("os produtos de categoria 3 tiveram aumento padrao de 8% e os que precisao de refrigeracao + 2.5%");
+			NovoPreco=preco+(preco*0.1)+(preco*0.025);
+			CountMaior8++;
+			document.write("os produtos de categoria 3 tiveram aumento padrao de 10% e os que precisam de refrigeracao + 2.5% <br>"+ "e o novo preço é de "+NovoPreco+"<br>");
 		}
 		if (categoria==3 && situação=="N"&& preco<=78.00){
-			preco=preco+(preco*10/100);
-			NovoPreco2=preco;
-			CountMaior8++
-			document.write("os produtos de categoria 3 tiveram aumento de 8%");
+			NovoPreco=preco+(preco*0.1);
+			CountMaior8++;
+			document.write("os produtos de categoria 3 tiveram aumento de 10% "+ "e o novo preço é de "+NovoPreco+"<br>");
 		}
 		if (categoria==1 && situação=="N" && preco>78.00){
-			preco=preço+(preco*12/100)
-			NovoPreco1=preco;
-			CountMaior8++
-			document.write("os produtos de categoria 1 tiveram aumento de 5% + 5% de imposto");
+			NovoPreco=preco+(preco*0.12);
+			CountMaior8++;
+			document.write("os produtos de categoria 1 tiveram aumento de 12% "+ "e o novo preço é de "+NovoPreco+"<br>");
 		}
+
 		if (categoria==2 && situação=="N"&& preco>78.00){
-			preco=preco+(preco*18/100);
-			NovoPreco2=preco;
-			CountMaior8++
-			document.write("os produtos de categoria 2 tiveram aumento de 8%");
+			NovoPreco=preco+(preco*0.15);
+			CountMaior8++;
+			document.write("os produtos de categoria 2 tiveram aumento de 15%"+ "e o novo preço é de"+NovoPreco+"<br>");
 		}
 		if (categoria==3 && situação=="R" && preco>78.00){
-			preco=preco+(preco*18/100)+(preço*2.5/100);
-			NovoPreco3=preco;
-			CountMaior8++
-			document.write("os produtos de categoria 3 tiveram aumento de pradrao 10% e os que precisao de refrigeracao + 2.5%");
+			NovoPreco=preco+(preco*0.18)+(preco*0.025);
+			CountMaior8++;
+			document.write("os produtos de categoria 3 tiveram aumento de pradrao 18% e os que precisam de refrigeracao + 2.5% "+ "e o novo preço é de "+NovoPreco+"<br>");
 		}
 		if (categoria==3 && situação=="N"&& preco>78.00){
-			preco=preco+(preco*18/100)
-			NovoPreco2=preco;
-			CountMaior8++
-			document.write("os produtos de categoria 2 tiveram aumento padrao de 8%");
+			NovoPreco=preco+(preco*0.18);
+			CountMaior8++;
+			document.write("os produtos de categoria 3 tiveram aumento padrao de 18% "+ "e o novo preço é de "+NovoPreco+"<br>");
 		}
-		else {
-			alert ("ERRO! <p> reinicie o programa!</p> ");
+		else if ((categoria==1 || categoria==2) && situação=="R"){
+			alert("erro! \n esse produto não admite refrigeração \n reinicie o programa p/ continuar")
+			break
 		}
-		if (preco>maxPreco){
-			maxPreco=preco;
-			caro=nome
+		if (NovoPreco>maxPreco){
+			maxPreco=NovoPreco;
+			caro=nome;
 		}
-		if (preco<minPreco){
-			minPreco=preco
-			barato=nome
-		}	
-		
+		if (NovoPreco<minPreco){
+			minPreco=NovoPreco;
+			barato=nome;
+		}
+		calculaPreco(preco,NovoPreco,nome);	
+
 	}
-
-function calculaPreco(preco,NovoPreco){
-	var calculo=NovoPreco-preco;
-	return calculo
-	document.write( "o novo preço é "+calculo+"<br>");
-}	
-
-//preço
-calculaPreco(preco,NovoPreco1)
-document.write("categoria1");
-calculaPreco(preco,NovoPreco2)
-document.write("categoria2");
-calculaPreco(preco,NovoPreco3)
-document.write("categoria3");
 
 // contador
 document.write("A quantidade produtos que sofreram aumento maior que 8% é: "+CountMaior8+"<br>");
@@ -105,6 +93,8 @@ document.write("A quantidaade de produtos que sofreram aumento menor ou igual a 
 
 
 // mais caro e mais barato
-document.write("o produto mais caro é: "+ caro+"que custa"+maxPreco);
-document.write("o produto mais barato é: "+ barato +"que custa"+minPreco);
+document.write("o produto mais caro é: "+ caro+" que custa "+maxPreco+"<br>");
+document.write("o produto mais barato é: "+ barato +" que custa "+minPreco);
+
 </script>
+
